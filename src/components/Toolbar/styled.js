@@ -7,9 +7,8 @@ export const Toolbar = styled.div`
   width: 100%;
   padding: 1em;
   margin: auto;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: #171717;
+  color: #fff;
 
   @media ${device.desktop} {
     width: 80%;

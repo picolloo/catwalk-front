@@ -2,17 +2,16 @@ import React from "react";
 
 import * as S from "./styled";
 
-import MarketItem from "../MarketItem";
+import CardItem from "../CardItem";
 
-export default function MarketList() {
+export default function CardList() {
   return (
-    <S.MarketList>
-      <MarketItem
-        id={1}
+    <S.CardList>
+      <CardItem
         name="Walmart"
         phone={32569836}
         description={"Hueheuheuehueuhe"}
       />
-    </S.MarketList>
+    </S.CardList>
   );
 }

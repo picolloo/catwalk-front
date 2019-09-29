@@ -1,17 +1,15 @@
 import React from "react";
 
-import Hero from "./components/Hero";
 import Toolbar from "./components/Toolbar";
 import Container from "./components/Container";
-import MarketList from "./components/MarketList";
+import CardList from "./components/CardList";
 
 function App() {
   return (
     <div className="App">
-      <Hero />
       <Toolbar />
       <Container>
-        <MarketList />
+        <CardList />
       </Container>
     </div>
   );

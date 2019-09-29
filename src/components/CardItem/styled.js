@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { device } from "../../styles";
 
-export const MarketItem = styled.div`
+export const CardItem = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(2, 1fr);
@@ -17,6 +17,8 @@ export const MarketItem = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 24px;
 
+  color: #1d2222;
+
   @media ${device.desktop} {
     grid-template-columns: 1.5fr 4.5fr;
   }
@@ -30,7 +32,6 @@ export const PropertiesArea = styled.section`
   grid-area: properties;
   display: flex;
   flex-direction: column;
-  color: rgba(0, 0, 0, 0.7);
 `;
 
 export const PropertieLabel = styled.span`

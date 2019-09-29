@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MarketList = styled.div`
+export const CardList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
