@@ -43,3 +43,9 @@ export const PropertieLabel = styled.span`
 export const PropertiesRow = styled.div`
   margin: 0.4em 0;
 `;
+
+export const DeleteButton = styled.a`
+  text-decoration: none;
+  position: relative;
+  right: 10px;
+`;

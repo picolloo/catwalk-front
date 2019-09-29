@@ -12,6 +12,8 @@ export default function MarketItem({ name, phone, description }) {
       </S.ImageArea>
 
       <S.PropertiesArea>
+        <S.DeleteButton>X</S.DeleteButton>
+
         <S.PropertiesRow>
           <S.PropertieLabel>Name:</S.PropertieLabel>
           <span>{name}</span>
