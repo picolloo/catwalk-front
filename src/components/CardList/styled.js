@@ -6,4 +6,8 @@ export const CardList = styled.div`
   align-items: center;
   margin-top: 2em;
   height: 100%;
+
+  & > * {
+    margin-bottom: 1em;
+  }
 `;

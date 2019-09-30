@@ -3,29 +3,24 @@ import React from "react";
 import * as S from "./styled";
 
 import CardItem from "../CardItem";
-import { useCatwalkServer } from "../../hooks";
+import ToolCardItem from "../ToolCardItem";
 
-export default function CardList() {
-  const [error, loading, markets] = useCatwalkServer();
-
+export default function CardList({ items, onNewMarket, onEditMarket }) {
   return (
-    <div>
-      {error && <span>{error}</span>}
-      {loading && <span>{loading}</span>}
-      {markets && (
-        <S.CardList>
-          {markets.map(market => (
-            <CardItem
-              key={market._id}
-              name={market.name}
-              phone={market.phone}
-              description={market.description}
-              image={market.mainImage}
-              extraImages={market.extraImages}
-            />
-          ))}
-        </S.CardList>
-      )}
-    </div>
+    <S.CardList>
+      <ToolCardItem toolName="New market" onClick={onNewMarket} />
+
+      {items.map(item => (
+        <CardItem
+          key={item._id}
+          name={item.name}
+          phone={item.phone}
+          description={item.description}
+          image={item.mainImage}
+          extraImages={item.extraImages}
+          onClick={() => onEditMarket(item._id)}
+        />
+      ))}
+    </S.CardList>
   );
 }

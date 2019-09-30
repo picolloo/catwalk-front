@@ -1,27 +1,36 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 export default () => {
   const [markets, setMarkets] = useState([]);
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMarkets = async () => {
-      const r = await axios.get(process.env.REACT_APP_CATWALK_SERVER);
-
-      setMarkets(r.data);
+      const { data } = await axios.get(process.env.REACT_APP_CATWALK_SERVER);
+      setMarkets(data);
     };
 
-    try {
-      setLoading(true);
-      fetchMarkets();
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+    fetchMarkets();
   }, []);
 
-  return [error, loading, markets];
+  const getMarket = async id => {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_CATWALK_SERVER}/${id}`
+    );
+
+    return data;
+  };
+
+  const removeMarket = async id => {};
+
+  const updateMarket = async id => {};
+
+  const addMarket = async market => {
+    const newMarket = await axios.post(
+      `${process.env.REACT_APP_CATWALK_SERVER}`,
+      market
+    );
+  };
+
+  return { markets, getMarket, removeMarket, updateMarket, addMarket };
 };

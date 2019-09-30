@@ -14,10 +14,15 @@ export const CardItem = styled.div`
   width: 100%;
   background: #fff;
   padding: 0.5em;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 24px;
-
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
   color: #1d2222;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.2s ease-in-out;
+  }
 
   @media ${device.desktop} {
     grid-template-columns: 1.5fr 4.5fr;

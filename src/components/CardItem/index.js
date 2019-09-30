@@ -4,15 +4,15 @@ import * as S from "./styled";
 
 import CardImage from "../CardImage";
 
-export default function MarketItem({ name, phone, description }) {
+export default function MarketItem({ name, phone, description, onClick }) {
   return (
-    <S.CardItem>
+    <S.CardItem onClick={onClick}>
       <S.ImageArea>
         <CardImage src={""} />
       </S.ImageArea>
 
       <S.PropertiesArea>
-        <S.DeleteButton>X</S.DeleteButton>
+        {/* <S.DeleteButton>X</S.DeleteButton> */}
 
         <S.PropertiesRow>
           <S.PropertieLabel>Name:</S.PropertieLabel>
