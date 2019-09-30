@@ -37,6 +37,7 @@ export const PropertiesArea = styled.section`
   grid-area: properties;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 export const PropertieLabel = styled.span`
@@ -49,8 +50,14 @@ export const PropertiesRow = styled.div`
   margin: 0.4em 0;
 `;
 
-export const DeleteButton = styled.a`
+export const DeleteButton = styled.button`
   text-decoration: none;
-  position: relative;
+  position: absolute;
   right: 10px;
+  top: 5px;
+  background: #171717;
+  color: #fff;
+  border: none;
+  padding: 0.5em;
+  border-radius: 5px;
 `;

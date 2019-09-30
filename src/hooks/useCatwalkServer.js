@@ -4,14 +4,12 @@ import { useState, useEffect } from "react";
 export default () => {
   const [markets, setMarkets] = useState([]);
 
-  useEffect(() => {
-    const fetchMarkets = async () => {
-      const { data } = await axios.get(process.env.REACT_APP_CATWALK_SERVER);
-      setMarkets(data);
-    };
+  const fetchMarkets = async () => {
+    const { data } = await axios.get(process.env.REACT_APP_CATWALK_SERVER);
+    setMarkets(data);
+  };
 
-    fetchMarkets();
-  }, []);
+  useEffect(() => fetchMarkets(), []);
 
   const getMarket = async id => {
     const { data } = await axios.get(
@@ -21,16 +19,27 @@ export default () => {
     return data;
   };
 
-  const removeMarket = async id => {};
+  const removeMarket = async id => {
+    await axios.delete(`${process.env.REACT_APP_CATWALK_SERVER}/${id}`);
 
-  const updateMarket = async id => {};
-
-  const addMarket = async market => {
-    const newMarket = await axios.post(
-      `${process.env.REACT_APP_CATWALK_SERVER}`,
-      market
-    );
+    fetchMarkets();
   };
 
-  return { markets, getMarket, removeMarket, updateMarket, addMarket };
+  const updateMarket = async id => {
+    fetchMarkets();
+  };
+
+  const addMarket = async market => {
+    await axios.post(`${process.env.REACT_APP_CATWALK_SERVER}`, market);
+
+    fetchMarkets();
+  };
+
+  return {
+    markets,
+    getMarket,
+    removeMarket,
+    updateMarket,
+    addMarket
+  };
 };
