@@ -22,12 +22,14 @@ export default function FormModal({ id, market, onConfirm, onCancel }) {
             placeholder="Name"
             value={name}
             onChange={e => setName(e.target.value)}
+            required
           />
           <S.Input
             placeholder="Phone"
             type="number"
             value={phone}
             onChange={e => setPhone(e.target.value)}
+            required
           />
           <S.Input
             placeholder="Street"

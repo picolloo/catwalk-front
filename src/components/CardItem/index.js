@@ -4,7 +4,19 @@ import * as S from "./styled";
 
 import CardImage from "../CardImage";
 
-export default function MarketItem({ name, phone, description, onClick }) {
+export default function MarketItem({
+  name,
+  phone,
+  description,
+  onClick,
+  onDelete
+}) {
+  const handleDeleteEvent = e => {
+    e.stopPropagation();
+
+    onDelete();
+  };
+
   return (
     <S.CardItem onClick={onClick}>
       <S.ImageArea>
@@ -12,7 +24,7 @@ export default function MarketItem({ name, phone, description, onClick }) {
       </S.ImageArea>
 
       <S.PropertiesArea>
-        {/* <S.DeleteButton>X</S.DeleteButton> */}
+        <S.DeleteButton onClick={handleDeleteEvent}>X</S.DeleteButton>
 
         <S.PropertiesRow>
           <S.PropertieLabel>Name:</S.PropertieLabel>
