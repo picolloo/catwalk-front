@@ -22,7 +22,6 @@ export default function CardList({
           phone={item.phone}
           description={item.description}
           image={item.mainImage}
-          extraImages={item.extraImages}
           onClick={() => onEditMarket(item._id)}
           onDelete={() => onRemoveMarket(item._id)}
         />

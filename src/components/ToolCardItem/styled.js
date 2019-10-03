@@ -7,6 +7,7 @@ export const ToolCardItem = styled.div`
   padding: 0.5em;
   background: #ddd;
   outline: 1px dashed #171717;
+  cursor: pointer;
 
   display: flex;
   justify-content: center;

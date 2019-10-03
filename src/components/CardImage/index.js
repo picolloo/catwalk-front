@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function CardImage({ imageSrc }) {
-  return <img src={imageSrc} alt="Supermarket" />;
+export default function CardImage({ image }) {
+  return <img src={image} alt="Supermarket" />;
 }

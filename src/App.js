@@ -1,49 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import Toolbar from "./components/Toolbar";
+import Navbar from "./components/Navbar";
 import Container from "./components/Container";
 import CardList from "./components/CardList";
 import FormModal from "./components/FormModal";
 import { useCatwalkServer } from "./hooks";
 
 function App() {
+  const [markets, setMarkets] = useState([]);
   const [activeMarket, setActiveMarket] = useState({});
-  const [modal, setModal] = useState({ show: false, edit: false });
+  const [showModal, setShowModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+
   const {
-    markets,
+    getMarkets,
     getMarket,
     removeMarket,
     updateMarket,
     addMarket
   } = useCatwalkServer();
 
-  const handleFormNewMode = () => {
+  useEffect(() => {
+    const fetchMarkets = async () => setMarkets(await getMarkets());
+
+    fetchMarkets();
+  }, []);
+
+  const handleFormNewMode = async () => {
     setActiveMarket({});
-    setModal({ show: true, edit: false });
+
+    setShowModal(true);
+    setEditModal(false);
   };
 
   const handleFormEditMode = async id => {
     const market = await getMarket(id);
     setActiveMarket(market);
 
-    setModal({ show: true, edit: true });
+    setEditModal(true);
+    setShowModal(true);
   };
 
   const handleNewMarket = async market => {
-    await addMarket(market);
+    const newMarket = await addMarket(market);
 
-    setModal({ ...modal, show: false });
+    setMarkets([...markets, newMarket]);
+
+    setShowModal(false);
   };
 
   const handleRemoveMarket = async id => {
     await removeMarket(id);
+
+    setMarkets(markets.filter(market => market.id !== id));
   };
 
   const handleEditMarket = async id => {};
 
   return (
     <div className="App">
-      <Toolbar />
+      <Navbar />
       <Container>
         <CardList
           items={markets}
@@ -52,11 +68,11 @@ function App() {
           onRemoveMarket={handleRemoveMarket}
         />
 
-        {modal.show && (
+        {showModal && (
           <FormModal
             market={activeMarket}
-            onCancel={() => setModal({ ...modal, show: false })}
-            onConfirm={modal.edit ? handleEditMarket : handleNewMarket}
+            onCancel={() => setShowModal(false)}
+            onConfirm={editModal ? handleEditMarket : handleNewMarket}
           />
         )}
       </Container>

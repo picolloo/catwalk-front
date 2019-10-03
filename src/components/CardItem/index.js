@@ -8,6 +8,7 @@ export default function MarketItem({
   name,
   phone,
   description,
+  image,
   onClick,
   onDelete
 }) {
@@ -20,7 +21,7 @@ export default function MarketItem({
   return (
     <S.CardItem onClick={onClick}>
       <S.ImageArea>
-        <CardImage src={""} />
+        <CardImage image={image} />
       </S.ImageArea>
 
       <S.PropertiesArea>
