@@ -12,15 +12,15 @@ export const Modal = styled.section`
 export const FormContainer = styled.section`
   position: fixed;
   background: white;
-  width: 80%;
-  height: auto;
+  width: 100%;
+  max-width: 500px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 `;
 
 export const Form = styled.form`
-  width: 20em;
+  width: 25em;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -45,6 +45,13 @@ export const Input = styled.input`
   &:hover {
     border-bottom: 1px solid #171717;
   }
+`;
+
+export const InputGroup = styled.div`
+  display: flex;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 `;
 
 export const TextArea = styled.textarea`

@@ -9,6 +9,7 @@ export const CardItem = styled.div`
   grid-template-areas:
     "image properties"
     "image properties";
+  grid-gap: 1em;
 
   max-width: 35rem;
   width: 100%;
@@ -31,6 +32,11 @@ export const CardItem = styled.div`
 
 export const ImageArea = styled.section`
   grid-area: image;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  heigth: 100%;
 `;
 
 export const PropertiesArea = styled.section`

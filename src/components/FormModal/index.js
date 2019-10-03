@@ -31,17 +31,19 @@ export default function FormModal({ id, market, onConfirm, onCancel }) {
             onChange={e => setPhone(e.target.value)}
             required
           />
-          <S.Input
-            placeholder="Street"
-            value={street}
-            onChange={e => setStreet(e.target.value)}
-          />
-          <S.Input
-            placeholder="Number"
-            type="number"
-            value={number}
-            setNumber={e => setNumber(e.target.value)}
-          />
+          <S.InputGroup>
+            <S.Input
+              placeholder="Street"
+              value={street}
+              onChange={e => setStreet(e.target.value)}
+            />
+            <S.Input
+              placeholder="Number"
+              type="number"
+              value={number}
+              setNumber={e => setNumber(e.target.value)}
+            />
+          </S.InputGroup>
           <S.Input
             placeholder="District"
             value={district}
@@ -79,6 +81,7 @@ export default function FormModal({ id, market, onConfirm, onCancel }) {
             <S.FileInput>
               <input
                 type="file"
+                name="mainImage"
                 accept="image/png, image/jpeg"
                 style={{ display: "none" }}
               />
@@ -88,6 +91,7 @@ export default function FormModal({ id, market, onConfirm, onCancel }) {
             <S.FileInput>
               <input
                 type="file"
+                name="extraImages"
                 accept="image/png, image/jpeg"
                 multiple
                 style={{ display: "none" }}

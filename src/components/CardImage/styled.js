@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
+import { device } from "../../styles";
+
 export const CardImage = styled.img`
-  max-width: 100%;
-  border-radius: 30px;
+  width: 100%;
+  border-radius: 10px;
+
+  @media ${device.tablet} {
+    width: 90%;
+  }
 `;

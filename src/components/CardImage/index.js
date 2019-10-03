@@ -1,5 +1,7 @@
 import React from "react";
 
+import * as S from "./styled";
+
 export default function CardImage({ image }) {
-  return <img src={image} alt="Supermarket" />;
+  return <S.CardImage src={image} alt="Supermarket" />;
 }
