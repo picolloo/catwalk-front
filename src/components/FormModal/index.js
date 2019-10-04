@@ -13,6 +13,35 @@ export default function FormModal({ id, market, onConfirm, onCancel }) {
   const [city, setCity] = useState(market.city);
   const [state, setState] = useState(market.state);
   const [description, setDescription] = useState(market.description);
+  const [mainImage, setMainImage] = useState();
+  const [extraImages, setExtraImages] = useState([]);
+
+  const handleSubmit = () => {
+    const mainFormData = new FormData();
+    mainFormData.append("file", mainImage);
+
+    const extraFormData = new FormData();
+
+    extraImages.map((img, index) => {
+      extraFormData.append(`extraImage-${index}`, img);
+    });
+
+    onConfirm({
+      id,
+      name,
+      phone,
+      street,
+      number,
+      district,
+      zip,
+      country,
+      city,
+      state,
+      description,
+      mainImage: mainFormData
+      // extraImages: extraFormData
+    });
+  };
 
   return (
     <S.Modal>
@@ -84,6 +113,7 @@ export default function FormModal({ id, market, onConfirm, onCancel }) {
                 name="mainImage"
                 accept="image/png, image/jpeg"
                 style={{ display: "none" }}
+                onChange={e => setMainImage(e.target.files[0])}
               />
               Main image
             </S.FileInput>
@@ -95,31 +125,14 @@ export default function FormModal({ id, market, onConfirm, onCancel }) {
                 accept="image/png, image/jpeg"
                 multiple
                 style={{ display: "none" }}
+                onChange={e => setExtraImages(e.target.files)}
               />
               Extra images
             </S.FileInput>
           </div>
           <div>
             <S.CancelButton onClick={onCancel}>Cancel</S.CancelButton>
-            <S.SubmitButton
-              onClick={() =>
-                onConfirm({
-                  id,
-                  name,
-                  phone,
-                  street,
-                  number,
-                  district,
-                  zip,
-                  country,
-                  city,
-                  state,
-                  description
-                })
-              }
-            >
-              Send
-            </S.SubmitButton>
+            <S.SubmitButton onClick={handleSubmit}>Send</S.SubmitButton>
           </div>
         </S.Form>
       </S.FormContainer>

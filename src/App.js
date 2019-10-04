@@ -17,7 +17,8 @@ function App() {
     getMarket,
     removeMarket,
     updateMarket,
-    addMarket
+    addMarket,
+    uploadFile
   } = useCatwalkServer();
 
   useEffect(() => {
@@ -42,9 +43,13 @@ function App() {
   };
 
   const handleNewMarket = async market => {
-    const newMarket = await addMarket(market);
+    const mainUrl = await uploadFile(market.mainImage);
 
-    setMarkets([...markets, newMarket]);
+    const newMarket = await addMarket({ ...market, mainImage: mainUrl });
+
+    if (newMarket) {
+      setMarkets([...markets, newMarket]);
+    }
 
     setShowModal(false);
   };
@@ -52,7 +57,7 @@ function App() {
   const handleRemoveMarket = async id => {
     await removeMarket(id);
 
-    setMarkets(markets.filter(market => market.id !== id));
+    setMarkets(markets.filter(market => market._id !== id));
   };
 
   const handleEditMarket = async id => {};

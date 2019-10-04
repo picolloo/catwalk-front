@@ -24,11 +24,26 @@ export default () => {
     await axios.post(`${process.env.REACT_APP_CATWALK_SERVER}`, market);
   };
 
+  const uploadFile = async file => {
+    const url = await axios.post(
+      `${process.env.REACT_APP_CATWALK_SERVER}/upload`,
+      file,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      }
+    );
+
+    return url.data;
+  };
+
   return {
     getMarkets,
     getMarket,
     removeMarket,
     updateMarket,
-    addMarket
+    addMarket,
+    uploadFile
   };
 };
