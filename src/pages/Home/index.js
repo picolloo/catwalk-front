@@ -19,11 +19,6 @@ export default function HomePage({ history }) {
 
   const handleNewMarket = () => {
     history.push("/new");
-    // const mainUrl = await uploadFile(market.mainImage);
-    // const newMarket = await addMarket({ ...market, mainImage: mainUrl });
-    // if (newMarket) {
-    //   setMarkets([...markets, newMarket]);
-    // }
   };
 
   const handleMarketSelect = id => {
