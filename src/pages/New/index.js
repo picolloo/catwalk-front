@@ -1,7 +1,9 @@
 import React from "react";
 
+import * as S from "./styled";
+
 import { useCatwalkServer } from "../../hooks";
-import FormModal from "../../components/FormModal";
+import Form from "../../components/Form";
 
 export default function NewPage({ history }) {
   const { addMarket, uploadFile } = useCatwalkServer();
@@ -15,5 +17,14 @@ export default function NewPage({ history }) {
     history.push("/");
   };
 
-  return <FormModal onCancel={handleCancelForm} onConfirm={handleNewMarket} />;
+  return (
+    <S.FormContainer>
+      <h2>Register new market</h2>
+      <Form
+        market={{}}
+        onCancel={handleCancelForm}
+        onConfirm={handleNewMarket}
+      />
+    </S.FormContainer>
+  );
 }

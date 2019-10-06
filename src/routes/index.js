@@ -11,9 +11,9 @@ export default function Routes() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/:id" component={Market} />
         <Route path="/new" component={New} />
         <Route path="/edit/:id" component={Edit} />
+        <Route path="/:id" component={Market} />
       </Switch>
     </BrowserRouter>
   );
