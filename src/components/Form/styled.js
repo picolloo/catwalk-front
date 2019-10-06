@@ -1,18 +1,20 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  width: 25em;
+  max-width: 25em;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2em;
+  margin-top: 1em;
+
+  color: #444;
 `;
 
 export const Input = styled.input`
-  outline: none;
-  padding: 7px;
+  padding: 0.5em;
   border: none;
   border-bottom: 1px solid #ddd;
   background: transparent;
@@ -30,16 +32,21 @@ export const Input = styled.input`
 
 export const InputGroup = styled.div`
   display: flex;
-  padding: 0;
   margin: 0;
   width: 100%;
+  align-items: center;
+
+  > label {
+    color: #999;
+    margin-right: 1em;
+  }
 `;
 
 export const TextArea = styled.textarea`
   resize: none;
   overflow-x: hidden;
   outline: none;
-  padding: 7px;
+  padding: 0.5em;
   border: none;
   border-bottom: 1px solid #ddd;
   background: transparent;

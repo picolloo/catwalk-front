@@ -45,64 +45,74 @@ export default function Form({ id, market, onConfirm, onCancel }) {
 
   return (
     <S.Form>
-      <S.Input
-        placeholder="Name"
-        value={name}
-        onChange={e => setName(e.target.value)}
-        required
-      />
-      <S.Input
-        placeholder="Phone"
-        type="number"
-        value={phone}
-        onChange={e => setPhone(e.target.value)}
-        required
-      />
       <S.InputGroup>
+        <label>Name:</label>
         <S.Input
-          placeholder="Street"
-          value={street}
-          onChange={e => setStreet(e.target.value)}
+          value={name}
+          onChange={e => setName(e.target.value)}
+          required
         />
+      </S.InputGroup>
+
+      <S.InputGroup>
+        <label>Phone:</label>
         <S.Input
-          placeholder="Number"
+          type="number"
+          value={phone}
+          onChange={e => setPhone(e.target.value)}
+          required
+        />
+      </S.InputGroup>
+
+      <S.InputGroup>
+        <label>Street</label>
+        <S.Input value={street} onChange={e => setStreet(e.target.value)} />
+      </S.InputGroup>
+
+      <S.InputGroup>
+        <label>Number</label>
+        <S.Input
           type="number"
           value={number}
           setNumber={e => setNumber(e.target.value)}
         />
       </S.InputGroup>
-      <S.Input
-        placeholder="District"
-        value={district}
-        onChange={e => setDistrict(e.target.value)}
-      />
-      <S.Input
-        placeholder="ZIP"
-        type="number"
-        value={zip}
-        onChange={e => setZip(e.target.value)}
-      />
-      <S.Input
-        placeholder="Country"
-        value={country}
-        onChange={e => setCountry(e.target.value)}
-      />
-      <S.Input
-        placeholder="City"
-        value={city}
-        onChange={e => setCity(e.target.value)}
-      />
-      <S.Input
-        placeholder="State"
-        value={state}
-        onChange={e => setState(e.target.value)}
-      />
 
-      <S.TextArea
-        placeholder="Description"
-        value={description}
-        onChange={e => setDescription(e.target.value)}
-      />
+      <S.InputGroup>
+        <label>District</label>
+        <S.Input value={district} onChange={e => setDistrict(e.target.value)} />
+      </S.InputGroup>
+
+      <S.InputGroup>
+        <label>ZIP</label>
+        <S.Input
+          type="number"
+          value={zip}
+          onChange={e => setZip(e.target.value)}
+        />
+      </S.InputGroup>
+
+      <S.InputGroup>
+        <label>Country</label>
+        <S.Input value={country} onChange={e => setCountry(e.target.value)} />
+      </S.InputGroup>
+
+      <S.InputGroup>
+        <label>City</label>
+        <S.Input value={city} onChange={e => setCity(e.target.value)} />
+      </S.InputGroup>
+
+      <S.InputGroup>
+        <label>State</label>
+        <S.Input value={state} onChange={e => setState(e.target.value)} />
+      </S.InputGroup>
+      <S.InputGroup>
+        <label>Description</label>
+        <S.TextArea
+          value={description}
+          onChange={e => setDescription(e.target.value)}
+        />
+      </S.InputGroup>
 
       <div>
         <S.FileInput>
