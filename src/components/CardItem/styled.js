@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { device } from "../../styles";
 
-export const CardItem = styled.div`
+export const CardItem = styled.li`
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(2, 1fr);
@@ -11,7 +11,7 @@ export const CardItem = styled.div`
     "image properties";
   grid-gap: 1em;
 
-  max-width: 35rem;
+  max-width: 40rem;
   width: 100%;
   background: #fff;
   padding: 0.5em;
@@ -19,6 +19,7 @@ export const CardItem = styled.div`
   border-radius: 15px;
   color: #1d2222;
   cursor: pointer;
+  list-style: none;
 
   &:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -36,6 +37,13 @@ export const ImageArea = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  > section {
+    width: 100%;
+    height: 90px;
+    background-size: cover;
+    border-radius: 4px;
+  }
 `;
 
 export const PropertiesArea = styled.section`
@@ -65,4 +73,10 @@ export const DeleteButton = styled.button`
   border: none;
   padding: 0.5em;
   border-radius: 5px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background: red;
+  }
 `;

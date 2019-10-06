@@ -3,18 +3,10 @@ import React from "react";
 import * as S from "./styled";
 
 import CardItem from "../CardItem";
-import ToolCardItem from "../ToolCardItem";
 
-export default function CardList({
-  items,
-  onNewMarket,
-  onEditMarket,
-  onRemoveMarket
-}) {
+export default function CardList({ items, onClick, onDelete }) {
   return (
     <S.CardList>
-      <ToolCardItem toolName="New market" onClick={onNewMarket} />
-
       {items.map(item => (
         <CardItem
           key={item._id}
@@ -22,8 +14,8 @@ export default function CardList({
           phone={item.phone}
           description={item.description}
           image={item.mainImage}
-          onClick={() => onEditMarket(item._id)}
-          onDelete={() => onRemoveMarket(item._id)}
+          onClick={() => onClick(item._id)}
+          onDelete={() => onDelete(item._id)}
         />
       ))}
     </S.CardList>

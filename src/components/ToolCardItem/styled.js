@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ToolCardItem = styled.div`
-  max-width: 35rem;
+  max-width: 40rem;
   width: 100%;
   height: 3em;
   padding: 0.5em;

@@ -2,8 +2,6 @@ import React from "react";
 
 import * as S from "./styled";
 
-import CardImage from "../CardImage";
-
 export default function MarketItem({
   name,
   phone,
@@ -21,7 +19,7 @@ export default function MarketItem({
   return (
     <S.CardItem onClick={onClick}>
       <S.ImageArea>
-        <CardImage image={image} />
+        <section style={{ backgroundImage: `url(${image})` }} />
       </S.ImageArea>
 
       <S.PropertiesArea>

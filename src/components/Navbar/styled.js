@@ -15,3 +15,12 @@ export const Navbar = styled.div`
     width: 80%;
   }
 `;
+
+export const NavLink = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+
+  &:visited {
+    color: inherit;
+  }
+`;
