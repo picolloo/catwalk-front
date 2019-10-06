@@ -113,9 +113,9 @@ export default function Form({ id, market, onConfirm, onCancel }) {
           onChange={e => setDescription(e.target.value)}
         />
       </S.InputGroup>
-
       <div>
         <S.FileInput>
+          Main image
           <input
             type="file"
             name="mainImage"
@@ -123,10 +123,10 @@ export default function Form({ id, market, onConfirm, onCancel }) {
             style={{ display: "none" }}
             onChange={e => setMainImage(e.target.files[0])}
           />
-          Main image
         </S.FileInput>
 
         <S.FileInput>
+          Extra images
           <input
             type="file"
             name="extraImages"
@@ -135,9 +135,9 @@ export default function Form({ id, market, onConfirm, onCancel }) {
             style={{ display: "none" }}
             onChange={e => setExtraImages(e.target.files)}
           />
-          Extra images
         </S.FileInput>
       </div>
+
       <div>
         <S.CancelButton onClick={onCancel}>Cancel</S.CancelButton>
         <S.SubmitButton onClick={handleSubmit}>Send</S.SubmitButton>

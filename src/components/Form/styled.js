@@ -50,7 +50,7 @@ export const TextArea = styled.textarea`
   border: none;
   border-bottom: 1px solid #ddd;
   background: transparent;
-  margin: 1em auto 10px;
+  margin: 0 auto 2em;
   width: 100%;
 
   &:hover {
@@ -86,7 +86,6 @@ export const CancelButton = styled.a`
 `;
 
 export const FileInput = styled.label`
-  display: inline-block;
   cursor: pointer;
 
   outline: none;
@@ -97,7 +96,7 @@ export const FileInput = styled.label`
   margin: 1em auto 10px;
   width: 8em;
   font-size: 14px;
-  margin-right: 1em;
+  margin: 1em 1em 0 0;
 
   &:hover {
     color: #fff;
