@@ -1,88 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-import Container from "./components/Container";
-import CardList from "./components/CardList";
-import FormModal from "./components/FormModal";
-import { useCatwalkServer } from "./hooks";
+import "./App.css";
 
-function App() {
-  const [markets, setMarkets] = useState([]);
-  const [activeMarket, setActiveMarket] = useState({});
-  const [showModal, setShowModal] = useState(false);
-  const [editModal, setEditModal] = useState(false);
+import Home from "./pages/Home";
+import Form from "./pages/Form";
+import Market from "./pages/Market";
 
-  const {
-    getMarkets,
-    getMarket,
-    removeMarket,
-    updateMarket,
-    addMarket,
-    uploadFile
-  } = useCatwalkServer();
-
-  useEffect(() => {
-    const fetchMarkets = async () => setMarkets(await getMarkets());
-
-    fetchMarkets();
-  }, []);
-
-  const handleFormNewMode = async () => {
-    setActiveMarket({});
-
-    setShowModal(true);
-    setEditModal(false);
-  };
-
-  const handleFormEditMode = async id => {
-    const market = await getMarket(id);
-    setActiveMarket(market);
-
-    setEditModal(true);
-    setShowModal(true);
-  };
-
-  const handleNewMarket = async market => {
-    const mainUrl = await uploadFile(market.mainImage);
-
-    const newMarket = await addMarket({ ...market, mainImage: mainUrl });
-
-    if (newMarket) {
-      setMarkets([...markets, newMarket]);
-    }
-
-    setShowModal(false);
-  };
-
-  const handleRemoveMarket = async id => {
-    await removeMarket(id);
-
-    setMarkets(markets.filter(market => market._id !== id));
-  };
-
-  const handleEditMarket = async id => {};
-
+export default function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Container>
-        <CardList
-          items={markets}
-          onNewMarket={handleFormNewMode}
-          onEditMarket={handleFormEditMode}
-          onRemoveMarket={handleRemoveMarket}
-        />
-
-        {showModal && (
-          <FormModal
-            market={activeMarket}
-            onCancel={() => setShowModal(false)}
-            onConfirm={editModal ? handleEditMarket : handleNewMarket}
-          />
-        )}
-      </Container>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/:id" component={Market} />
+        <Route path="/new" component={Form} />
+        <Route path="/edit/:id" component={Form} />
+      </Switch>
+    </BrowserRouter>
   );
 }
-
-export default App;
