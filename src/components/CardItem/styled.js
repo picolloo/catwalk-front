@@ -36,7 +36,6 @@ export const ImageArea = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  heigth: 100%;
 `;
 
 export const PropertiesArea = styled.section`
