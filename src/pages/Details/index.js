@@ -29,10 +29,19 @@ export default function DetailsPage({
     history.push(`/edit/${id}`);
   };
 
+  const handleCancelForm = () => {
+    history.push("/");
+  };
+
   return (
     <S.FormContainer>
       <h2>Market details</h2>
-      <Form market={market} edit onEdit={handleEditForm} />
+      <Form
+        market={market}
+        edit
+        onSecondaryClick={handleCancelForm}
+        onPrimaryClick={handleEditForm}
+      />
     </S.FormContainer>
   );
 }

@@ -5,10 +5,9 @@ import * as S from "./styled";
 export default function Form({
   id,
   market,
-  onConfirm,
-  onCancel,
-  edit = false,
-  onEdit
+  onPrimaryClick,
+  onSecondaryClick,
+  edit = false
 }) {
   const [name, setName] = useState(market.name);
   const [phone, setPhone] = useState(market.phone);
@@ -47,7 +46,7 @@ export default function Form({
       extraFormData.append(`img-${index}`, img);
     });
 
-    onConfirm({
+    onPrimaryClick({
       id,
       name,
       phone,
@@ -70,6 +69,7 @@ export default function Form({
         <label>Name:</label>
         <S.Input
           value={name}
+          name="name"
           onChange={e => setName(e.target.value)}
           required
           readOnly={edit}
@@ -80,6 +80,7 @@ export default function Form({
         <label>Phone:</label>
         <S.Input
           type="number"
+          name="phone"
           value={phone}
           onChange={e => setPhone(e.target.value)}
           required
@@ -89,13 +90,18 @@ export default function Form({
 
       <S.InputGroup>
         <label>Street:</label>
-        <S.Input value={street} onChange={e => setStreet(e.target.value)} />
+        <S.Input
+          value={street}
+          name="street"
+          onChange={e => setStreet(e.target.value)}
+        />
       </S.InputGroup>
 
       <S.InputGroup>
         <label>Number:</label>
         <S.Input
           type="number"
+          name="number"
           value={number}
           setNumber={e => setNumber(e.target.value)}
           readOnly={edit}
@@ -106,6 +112,7 @@ export default function Form({
         <label>District:</label>
         <S.Input
           value={district}
+          name="district"
           onChange={e => setDistrict(e.target.value)}
           readOnly={edit}
         />
@@ -115,6 +122,7 @@ export default function Form({
         <label>ZIP:</label>
         <S.Input
           type="number"
+          name="zip"
           value={zip}
           onChange={e => setZip(e.target.value)}
         />
@@ -124,6 +132,7 @@ export default function Form({
         <label>Country:</label>
         <S.Input
           value={country}
+          name="country"
           onChange={e => setCountry(e.target.value)}
           readOnly={edit}
         />
@@ -133,6 +142,7 @@ export default function Form({
         <label>City:</label>
         <S.Input
           value={city}
+          name="city"
           onChange={e => setCity(e.target.value)}
           readOnly={edit}
         />
@@ -142,6 +152,7 @@ export default function Form({
         <label>State:</label>
         <S.Input
           value={state}
+          name="state"
           onChange={e => setState(e.target.value)}
           readOnly={edit}
         />
@@ -149,6 +160,7 @@ export default function Form({
       <S.InputGroup>
         <label>Description:</label>
         <S.TextArea
+          name="description"
           value={description}
           onChange={e => setDescription(e.target.value)}
           readOnly={edit}
@@ -186,13 +198,15 @@ export default function Form({
 
       {edit ? (
         <div>
-          <S.SecondaryButton onClick={onCancel}>Back</S.SecondaryButton>
-          <S.PrimaryButton onClick={onEdit}>Edit</S.PrimaryButton>
+          <S.SecondaryButton onClick={onSecondaryClick}>Back</S.SecondaryButton>
+          <S.PrimaryButton onClick={onPrimaryClick}>Edit</S.PrimaryButton>
         </div>
       ) : (
         <div>
-          <S.SecondaryButton onClick={onCancel}>Cancel</S.SecondaryButton>
-          <S.PrimaryButton onClick={handleSubmit}>Send</S.PrimaryButton>
+          <S.SecondaryButton onClick={onSecondaryClick}>
+            Cancel
+          </S.SecondaryButton>
+          <S.PrimaryButton onClick={onPrimaryClick}>Send</S.PrimaryButton>
         </div>
       )}
     </S.Form>

@@ -25,8 +25,8 @@ export default function NewPage({ history }) {
       <h2>Register new market</h2>
       <Form
         market={{}}
-        onCancel={handleCancelForm}
-        onConfirm={handleNewMarket}
+        onSecondaryClick={handleCancelForm}
+        onPrimaryClick={handleNewMarket}
       />
     </S.FormContainer>
   );

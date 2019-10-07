@@ -34,8 +34,8 @@ export default function EditPage({
       <h1>Edit market</h1>
       <Form
         market={{}}
-        onCancel={handleCancelForm}
-        onConfirm={handleEditMarket}
+        onSecondaryClick={handleCancelForm}
+        onPrimaryClick={handleEditMarket}
       />
     </S.FormContainer>
   );
