@@ -24,7 +24,7 @@ export default function EditPage({
   }, [id]);
 
   const handleEditMarket = async () => {
-    await updateMarket();
+    await updateMarket(id, market);
 
     history.push("/");
   };
