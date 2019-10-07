@@ -45,9 +45,7 @@ export default function Form({
 
   const handleSubmit = () => {
     const formData = new FormData();
-    images.map((img, index) => {
-      formData.append(`img-${index}`, img);
-    });
+    images.forEach((img, index) => formData.append(`img-${index}`, img));
 
     onPrimaryClick({
       id,
