@@ -33,7 +33,7 @@ export default () => {
       }
     });
 
-    return response.data;
+    return response.data.url;
   };
 
   return {
