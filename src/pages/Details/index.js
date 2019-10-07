@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 
 import * as S from "./styled";
 
@@ -13,11 +13,6 @@ export default function DetailsPage({
   }
 }) {
   const [market, setMarket] = useState();
-
-  const thumbnails = useMemo(() => {
-    const images = market ? [market.mainImage, ...market.extraImages] : [];
-    return images;
-  }, [market]);
 
   const { getMarket } = useCatwalkServer();
 
@@ -57,7 +52,7 @@ export default function DetailsPage({
           city={market.city}
           state={market.state}
           description={market.description}
-          images={thumbnails}
+          images={market ? [market.mainImage, ...market.extraImages] : []}
         />
       )}
     </S.FormContainer>

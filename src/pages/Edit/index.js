@@ -11,7 +11,7 @@ export default function EditPage({
     params: { id }
   }
 }) {
-  const [market, setMarket] = useState({});
+  const [market, setMarket] = useState();
 
   const { getMarket, updateMarket } = useCatwalkServer();
 
@@ -29,14 +29,35 @@ export default function EditPage({
     history.push("/");
   };
 
+  const handleInputEdit = (attrName, attrValue) => {
+    setMarket({
+      ...market,
+      [attrName]: attrValue
+    });
+  };
+
   return (
     <S.FormContainer>
       <h1>Edit market</h1>
-      <Form
-        market={market}
-        onSecondaryClick={handleCancelForm}
-        onPrimaryClick={handleEditMarket}
-      />
+      {market && (
+        <Form
+          market={market}
+          onInputEdit={handleInputEdit}
+          onSecondaryClick={handleCancelForm}
+          onPrimaryClick={handleEditMarket}
+          name={market.name}
+          phone={market.phone}
+          street={market.street}
+          number={market.number}
+          district={market.district}
+          zip={market.zip}
+          country={market.country}
+          city={market.city}
+          state={market.state}
+          description={market.description}
+          images={market ? [market.mainImage, ...market.extraImages] : []}
+        />
+      )}
     </S.FormContainer>
   );
 }

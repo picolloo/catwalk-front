@@ -7,7 +7,7 @@ export default function Form({
   onInputEdit,
   onPrimaryClick,
   onSecondaryClick,
-  edit = false,
+  edit,
   name,
   phone,
   street,
@@ -83,6 +83,7 @@ export default function Form({
         <S.Input
           value={street}
           name="street"
+          readOnly={edit}
           onChange={e => onInputEdit(e.target.name, e.target.value)}
         />
       </S.InputGroup>
@@ -114,6 +115,7 @@ export default function Form({
           type="number"
           name="zip"
           value={zip}
+          readOnly={edit}
           onChange={e => onInputEdit(e.target.name, e.target.value)}
         />
       </S.InputGroup>
