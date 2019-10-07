@@ -39,6 +39,9 @@ export const InputGroup = styled.div`
   > label {
     color: #999;
     margin-right: 1em;
+    display: inline-block;
+    max-width: 90px;
+    width: 100%;
   }
 `;
 
@@ -58,7 +61,7 @@ export const TextArea = styled.textarea`
   }
 `;
 
-export const SubmitButton = styled.a`
+export const PrimaryButton = styled.a`
   cursor: pointer;
   border: 1px solid #171717;
   background: #171717;
@@ -74,7 +77,7 @@ export const SubmitButton = styled.a`
   }
 `;
 
-export const CancelButton = styled.a`
+export const SecondaryButton = styled.a`
   cursor: pointer;
   padding: 5px 20px;
   display: inline-block;
@@ -86,20 +89,82 @@ export const CancelButton = styled.a`
 `;
 
 export const FileInput = styled.label`
+  margin-bottom: 10px;
+  border-radius: 4px;
+
+  background-color: #f5f7fa;
+  align-self: center;
+  text-align: center;
+  padding: 3em;
+  text-transform: uppercase;
+  color: #848ea1;
+  font-size: 12px;
   cursor: pointer;
+  border-radius: 4px;
+`;
 
-  outline: none;
-  padding: 7px;
-  border: none;
-  border: 1px solid #ddd;
-  background: transparent;
-  margin: 1em auto 10px;
-  width: 8em;
-  font-size: 14px;
-  margin: 1em 1em 0 0;
+export const ImagesSection = styled.div`
+  display: flex;
+`;
 
-  &:hover {
+export const Image = styled.div`
+  width: 6em;
+  height: 6em;
+  background-size: cover;
+  margin-right: 10px;
+  background-position: center;
+  border-radius: 4px;
+
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    display: none;
+    text-transform: capitalize;
+    z-index: 2;
+    align-self: center;
+  }
+
+  &:hover span {
+    display: block;
     color: #fff;
-    background: #171717;
+  }
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.1s ease-in;
+    border-radius: 4px;
+    opacity: 0;
+    position: absolute;
+  }
+
+  &:hover::after {
+    display: block;
+    background-color: #000;
+    opacity: 0.5;
   }
 `;
+
+// cursor: pointer;
+
+// outline: none;
+// padding: 7px;
+// border: none;
+// border: 1px solid #ddd;
+// background: transparent;
+// margin-right: 1em;
+// width: 8em;
+// font-size: 14px;
+
+// &:hover {
+//   color: #fff;
+//   background: #171717;
+// }

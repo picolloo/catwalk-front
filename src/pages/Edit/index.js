@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import * as S from "./styled";
 
 import { useCatwalkServer } from "../../hooks";
 import Form from "../../components/Form";
 
-export default function NewPage({ history }) {
-  const { updateMarket } = useCatwalkServer();
+export default function EditPage({
+  history,
+  match: {
+    params: { id }
+  }
+}) {
+  const [market, setMarket] = useState();
+
+  const { getMarket, updateMarket } = useCatwalkServer();
+
+  useEffect(() => {
+    const fetchMarket = async id => {
+      setMarket(await getMarket(id));
+    };
+
+    fetchMarket(id);
+  }, [id]);
 
   const handleEditMarket = async market => {};
 
@@ -16,6 +31,7 @@ export default function NewPage({ history }) {
 
   return (
     <S.FormContainer>
+      <h1>Edit market</h1>
       <Form
         market={{}}
         onCancel={handleCancelForm}

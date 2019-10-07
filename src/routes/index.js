@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "../pages/Home";
 import New from "../pages/New";
 import Edit from "../pages/Edit";
-import Market from "../pages/Market";
+import Details from "../pages/Details";
 
 export default function Routes() {
   return (
@@ -13,7 +13,7 @@ export default function Routes() {
         <Route path="/" exact component={Home} />
         <Route path="/new" component={New} />
         <Route path="/edit/:id" component={Edit} />
-        <Route path="/:id" component={Market} />
+        <Route path="/:id" component={Details} />
       </Switch>
     </BrowserRouter>
   );

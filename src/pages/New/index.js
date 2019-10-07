@@ -10,6 +10,7 @@ export default function NewPage({ history }) {
 
   const handleNewMarket = async market => {
     const mainUrl = await uploadFile(market.mainImage);
+
     await addMarket({ ...market, mainImage: mainUrl });
 
     history.push("/");
