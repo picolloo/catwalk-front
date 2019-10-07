@@ -23,7 +23,11 @@ export default function EditPage({
     fetchMarket(id);
   }, [id]);
 
-  const handleEditMarket = async market => {};
+  const handleEditMarket = async () => {
+    await updateMarket();
+
+    history.push("/");
+  };
 
   const handleCancelForm = () => {
     history.push("/");

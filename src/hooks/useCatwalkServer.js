@@ -20,7 +20,9 @@ export default () => {
     await api.delete(`/${id}`);
   };
 
-  const updateMarket = async id => {};
+  const updateMarket = async market => {
+    await api.put(`/${market.id}`, market);
+  };
 
   const addMarket = async market => {
     await api.post(`/`, market);

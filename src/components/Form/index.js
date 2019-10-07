@@ -20,9 +20,17 @@ export default function Form({
   description,
   images
 }) {
-  const imgUrls = useMemo(() => images.map(img => URL.createObjectURL(img)), [
-    images
-  ]);
+  const imgUrls = useMemo(
+    () =>
+      images.map(img => {
+        if (img instanceof Object) {
+          return URL.createObjectURL(img);
+        }
+
+        return img;
+      }),
+    [images]
+  );
 
   const handleImageUpload = e => {
     onInputEdit("images", [...images, e.target.files[0]]);
