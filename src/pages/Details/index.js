@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 import * as S from "./styled";
 
@@ -12,7 +12,12 @@ export default function DetailsPage({
     params: { id }
   }
 }) {
-  const [market, setMarket] = useState({});
+  const [market, setMarket] = useState();
+
+  const thumbnails = useMemo(() => {
+    const images = market ? [market.mainImage, ...market.extraImages] : [];
+    return images;
+  }, [market]);
 
   const { getMarket } = useCatwalkServer();
 
@@ -36,12 +41,25 @@ export default function DetailsPage({
   return (
     <S.FormContainer>
       <h2>Market details</h2>
-      <Form
-        market={market}
-        edit
-        onSecondaryClick={handleCancelForm}
-        onPrimaryClick={handleEditForm}
-      />
+      {market && (
+        <Form
+          market={market}
+          edit
+          onSecondaryClick={handleCancelForm}
+          onPrimaryClick={handleEditForm}
+          name={market.name}
+          phone={market.phone}
+          street={market.street}
+          number={market.number}
+          district={market.district}
+          zip={market.zip}
+          country={market.country}
+          city={market.city}
+          state={market.state}
+          description={market.description}
+          images={thumbnails}
+        />
+      )}
     </S.FormContainer>
   );
 }

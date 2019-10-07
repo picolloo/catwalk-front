@@ -11,7 +11,7 @@ export default function EditPage({
     params: { id }
   }
 }) {
-  const [market, setMarket] = useState();
+  const [market, setMarket] = useState({});
 
   const { getMarket, updateMarket } = useCatwalkServer();
 
@@ -33,7 +33,7 @@ export default function EditPage({
     <S.FormContainer>
       <h1>Edit market</h1>
       <Form
-        market={{}}
+        market={market}
         onSecondaryClick={handleCancelForm}
         onPrimaryClick={handleEditMarket}
       />

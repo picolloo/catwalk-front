@@ -1,40 +1,34 @@
-import React, { useState, useMemo } from "react";
+import React from "react";
 
 import * as S from "./styled";
 
 export default function Form({
   id,
-  market,
+  onInputEdit,
   onPrimaryClick,
   onSecondaryClick,
-  edit = false
+  edit = false,
+  name,
+  phone,
+  street,
+  number,
+  district,
+  zip,
+  country,
+  city,
+  state,
+  description,
+  images
 }) {
-  const [name, setName] = useState(market.name);
-  const [phone, setPhone] = useState(market.phone);
-  const [street, setStreet] = useState(market.street);
-  const [number, setNumber] = useState(market.number);
-  const [district, setDistrict] = useState(market.number);
-  const [zip, setZip] = useState(market.zip);
-  const [country, setCountry] = useState(market.country);
-  const [city, setCity] = useState(market.city);
-  const [state, setState] = useState(market.state);
-  const [description, setDescription] = useState(market.description);
-  const [images, setImages] = useState([]);
-
-  const thumbnails = useMemo(
-    () => images.map(img => URL.createObjectURL(img)),
-    [images]
-  );
-
   const handleImageUpload = e => {
-    setImages([...images, e.target.files[0]]);
+    onInputEdit("images", [...images, e.target.files[0]]);
   };
 
   const handleRemoveImage = index => {
     const updatedImages = [...images];
     updatedImages.splice(index, 1);
 
-    setImages(updatedImages);
+    onInputEdit("images", updatedImages);
   };
 
   const handleSubmit = () => {
@@ -66,7 +60,7 @@ export default function Form({
         <S.Input
           value={name}
           name="name"
-          onChange={e => setName(e.target.value)}
+          onChange={e => onInputEdit(e.target.name, e.target.value)}
           required
           readOnly={edit}
         />
@@ -78,7 +72,7 @@ export default function Form({
           type="number"
           name="phone"
           value={phone}
-          onChange={e => setPhone(e.target.value)}
+          onChange={e => onInputEdit(e.target.name, e.target.value)}
           required
           readOnly={edit}
         />
@@ -89,7 +83,7 @@ export default function Form({
         <S.Input
           value={street}
           name="street"
-          onChange={e => setStreet(e.target.value)}
+          onChange={e => onInputEdit(e.target.name, e.target.value)}
         />
       </S.InputGroup>
 
@@ -99,7 +93,7 @@ export default function Form({
           type="number"
           name="number"
           value={number}
-          setNumber={e => setNumber(e.target.value)}
+          onChange={e => onInputEdit(e.target.name, e.target.value)}
           readOnly={edit}
         />
       </S.InputGroup>
@@ -109,7 +103,7 @@ export default function Form({
         <S.Input
           value={district}
           name="district"
-          onChange={e => setDistrict(e.target.value)}
+          onChange={e => onInputEdit(e.target.name, e.target.value)}
           readOnly={edit}
         />
       </S.InputGroup>
@@ -120,7 +114,7 @@ export default function Form({
           type="number"
           name="zip"
           value={zip}
-          onChange={e => setZip(e.target.value)}
+          onChange={e => onInputEdit(e.target.name, e.target.value)}
         />
       </S.InputGroup>
 
@@ -129,7 +123,7 @@ export default function Form({
         <S.Input
           value={country}
           name="country"
-          onChange={e => setCountry(e.target.value)}
+          onChange={e => onInputEdit(e.target.name, e.target.value)}
           readOnly={edit}
         />
       </S.InputGroup>
@@ -139,7 +133,7 @@ export default function Form({
         <S.Input
           value={city}
           name="city"
-          onChange={e => setCity(e.target.value)}
+          onChange={e => onInputEdit(e.target.name, e.target.value)}
           readOnly={edit}
         />
       </S.InputGroup>
@@ -149,7 +143,7 @@ export default function Form({
         <S.Input
           value={state}
           name="state"
-          onChange={e => setState(e.target.value)}
+          onChange={e => onInputEdit(e.target.name, e.target.value)}
           readOnly={edit}
         />
       </S.InputGroup>
@@ -158,7 +152,7 @@ export default function Form({
         <S.TextArea
           name="description"
           value={description}
-          onChange={e => setDescription(e.target.value)}
+          onChange={e => onInputEdit(e.target.name, e.target.value)}
           readOnly={edit}
         />
       </S.InputGroup>
@@ -167,7 +161,7 @@ export default function Form({
         <label>Images:</label>
 
         <S.ImagesSection>
-          {thumbnails.map((img, index) => (
+          {images.map((img, index) => (
             <S.Image
               key={index}
               style={{ backgroundImage: `url(${img})` }}
