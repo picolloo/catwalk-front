@@ -9,9 +9,13 @@ export default function NewPage({ history }) {
   const { addMarket, uploadFile } = useCatwalkServer();
 
   const handleNewMarket = async market => {
-    const mainUrl = await uploadFile(market.mainImage);
+    const urls = await uploadFile(market.images);
 
-    await addMarket({ ...market, mainImage: mainUrl });
+    await addMarket({
+      ...market,
+      mainImage: urls[0],
+      extraImages: urls.slice(1)
+    });
 
     history.push("/");
   };

@@ -38,12 +38,9 @@ export default function Form({
   };
 
   const handleSubmit = () => {
-    const mainFormData = new FormData();
-    mainFormData.append(`image`, images[0]);
-
-    const extraFormData = new FormData();
-    images.slice(1).map((img, index) => {
-      extraFormData.append(`img-${index}`, img);
+    const formData = new FormData();
+    images.map((img, index) => {
+      formData.append(`img-${index}`, img);
     });
 
     onPrimaryClick({
@@ -58,8 +55,7 @@ export default function Form({
       city,
       state,
       description,
-      mainImage: mainFormData,
-      extraImages: extraFormData
+      images: formData
     });
   };
 
@@ -206,7 +202,7 @@ export default function Form({
           <S.SecondaryButton onClick={onSecondaryClick}>
             Cancel
           </S.SecondaryButton>
-          <S.PrimaryButton onClick={onPrimaryClick}>Send</S.PrimaryButton>
+          <S.PrimaryButton onClick={handleSubmit}>Send</S.PrimaryButton>
         </div>
       )}
     </S.Form>
