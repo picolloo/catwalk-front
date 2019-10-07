@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import * as S from "./styled";
 
@@ -20,6 +20,10 @@ export default function Form({
   description,
   images
 }) {
+  const imgUrls = useMemo(() => images.map(img => URL.createObjectURL(img)), [
+    images
+  ]);
+
   const handleImageUpload = e => {
     onInputEdit("images", [...images, e.target.files[0]]);
   };
@@ -163,7 +167,7 @@ export default function Form({
         <label>Images:</label>
 
         <S.ImagesSection>
-          {images.map((img, index) => (
+          {imgUrls.map((img, index) => (
             <S.Image
               key={index}
               style={{ backgroundImage: `url(${img})` }}
