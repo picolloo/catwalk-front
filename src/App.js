@@ -1,18 +1,18 @@
 import React from "react";
 
-import Toolbar from "./components/Toolbar";
-import Container from "./components/Container";
-import CardList from "./components/CardList";
+import "./App.css";
 
-function App() {
+import Routes from "./routes";
+import Navbar from "./components/Navbar";
+import Container from "./components/Container";
+
+export default function App() {
   return (
-    <div className="App">
-      <Toolbar />
+    <>
+      <Navbar />
       <Container>
-        <CardList />
+        <Routes />
       </Container>
-    </div>
+    </>
   );
 }
-
-export default App;

@@ -1,14 +1,9 @@
 import styled from "styled-components";
 
-export const CardList = styled.ul`
+export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2em;
   height: 100%;
-  width: 100%;
-
-  & > * {
-    margin-bottom: 1em;
-  }
 `;

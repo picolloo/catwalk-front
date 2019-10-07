@@ -2,16 +2,29 @@ import React from "react";
 
 import * as S from "./styled";
 
-import CardImage from "../CardImage";
+export default function MarketItem({
+  name,
+  phone,
+  description,
+  image,
+  onClick,
+  onDelete
+}) {
+  const handleDeleteEvent = e => {
+    e.stopPropagation();
 
-export default function MarketItem({ name, phone, description }) {
+    onDelete();
+  };
+
   return (
-    <S.CardItem>
+    <S.CardItem onClick={onClick}>
       <S.ImageArea>
-        <CardImage src={""} />
+        <section style={{ backgroundImage: `url(${image})` }} />
       </S.ImageArea>
 
       <S.PropertiesArea>
+        <S.DeleteButton onClick={handleDeleteEvent}>X</S.DeleteButton>
+
         <S.PropertiesRow>
           <S.PropertieLabel>Name:</S.PropertieLabel>
           <span>{name}</span>
